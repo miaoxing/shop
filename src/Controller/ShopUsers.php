@@ -16,7 +16,7 @@ class ShopUsers extends \miaoxing\plugin\BaseController
         /** @var \Miaoxing\Shop\Service\ShopUser $shopUser */
         foreach ($shopUsers as $shopUser) {
             $users[] = $shopUser->toArray() + [
-                    'user' => $shopUser->getUser()->toArray()
+                    'user' => $shopUser->getUser()->toArray(),
                 ];
         }
 
@@ -26,6 +26,5 @@ class ShopUsers extends \miaoxing\plugin\BaseController
             'rows' => $req['rows'],
             'records' => count($users),
         ]);
-
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Miaoxing\Shop\Service;
 
-use Miaoxing\Shop\Service\Shop;
-
 /**
  * @property \Miaoxing\LinkTo\Service\LinkTo $linkTo
  */

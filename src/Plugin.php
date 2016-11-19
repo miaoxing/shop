@@ -24,7 +24,7 @@ class Plugin extends \miaoxing\plugin\BasePlugin
         $links[] = [
             'typeId' => 'site',
             'name' => '门店导航',
-            'url' => 'shop/index'
+            'url' => 'shop/index',
         ];
     }
 }
