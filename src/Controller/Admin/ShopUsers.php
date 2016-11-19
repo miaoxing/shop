@@ -40,7 +40,7 @@ class ShopUsers extends \miaoxing\plugin\BaseController
                 /** @var \Miaoxing\Shop\Service\ShopUser $shopUser */
                 foreach ($shopUsers as $shopUser) {
                     $users[] = $shopUser->toArray() + [
-                            'user' => $shopUser->getUser()->toArray(),
+                            'user' => $shopUser->getUser()->toArray()
                         ];
                 }
 
@@ -58,7 +58,7 @@ class ShopUsers extends \miaoxing\plugin\BaseController
 
     public function updateAction($req)
     {
-        $validator = wei()->validate([
+        $validator = wei()->validate(array(
             // 待验证的数据
             'data' => [
                 'shopId' => $req['shopId'],
@@ -67,26 +67,25 @@ class ShopUsers extends \miaoxing\plugin\BaseController
             // 验证规则数组
             'rules' => [
                 'shopId' => [
-                    'required' => true,
+                    'required' => true
                 ],
                 'userId' => [
-                    'required' => true,
+                    'required' => true
                 ],
             ],
             // 数据项名称的数组,用于错误信息提示
             'names' => [
                 'shopId' => '商城ID',
-                'userId' => '用户ID',
-            ],
-        ]);
+                'userId' => '用户ID'
+            ]
+        ));
         if (!$validator->isValid()) {
             $firstMessage = $validator->getFirstMessage();
-
-            return json_encode(['code' => -7, 'message' => $firstMessage]);
+            return json_encode(array("code" => -7, "message" => $firstMessage));
         }
 
         wei()->shopUser()->curApp()->findOrInit(['shopId' => $req['shopId'], 'userId' => $req['userId']])->save($req);
-
         return $this->suc();
     }
+
 }
