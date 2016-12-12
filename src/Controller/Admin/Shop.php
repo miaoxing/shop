@@ -27,6 +27,19 @@ class Shop extends \miaoxing\plugin\BaseController
                 // 排序
                 $shops->desc('id');
 
+                // 编号
+                if ($req['ids']) {
+                    $shops->andWhere(['id' => explode(',', $req['ids'])]);
+                }
+
+                if ($req['province']) {
+                    $shops->andWhere(['province' => $req['province']]);
+                }
+
+                if ($req['city']) {
+                    $shops->andWhere(['city' => $req['city']]);
+                }
+
                 if ($req['wechatSynced']) {
                     $shops->andWhere('wechatLocationId NOT IN (0, -1)');
                 }

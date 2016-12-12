@@ -1,0 +1,20 @@
+.product-popup-picker-products {
+  border: 1px solid #d5d5d5;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.product-popup-picker-well {
+  border-top: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+.product-popup-picker-table {
+  border: 0;
+}
+
+.product-popup-picker-table + .row:last-child {
+  border-bottom: 0;
+}
+
