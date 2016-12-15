@@ -6,7 +6,7 @@
 
 <!-- /.page-header -->
 <div class="page-header">
-  <a class="btn pull-right" href="<?= $url('admin/shop/index') ?>">返回列表</a>
+  <a class="btn btn-default pull-right" href="<?= $url('admin/shop/index') ?>">返回列表</a>
 
   <h1>
     店员管理
