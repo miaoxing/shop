@@ -14,6 +14,7 @@ define([
     data: {},
     target: 'body',
     maxNum: 1,
+    url: $.url('admin/shop.json'),
     inputName: 'shop_id',
     selectName: '请选择门店',
     changeName: '重新选择',
@@ -69,7 +70,7 @@ define([
     form.toOptions(this.$modal.find('.js-shop-popup-picker-category-id'), this.options.categories, 'id', 'name');
 
     this.$modal.find('.js-cascading-item').cascading({
-      url: $.url('regions.json', {parentId: '中国'}),
+      url: that.url,
       valueKey: 'label'
     });
 
@@ -78,7 +79,7 @@ define([
 
     this.$table = this.$table.dataTable({
       ajax: {
-        url: $.url('admin/shop.json')
+        url: that.url
       },
       columns: [
         {
