@@ -2,7 +2,6 @@ define([
   'form',
   'template',
   'css!plugins/shop/css/admin/shop-popup-picker',
-  'template',
   'dataTable',
   'comps/jquery-cascading/jquery-cascading'
 ], function (form, template) {
@@ -70,7 +69,7 @@ define([
     form.toOptions(this.$modal.find('.js-shop-popup-picker-category-id'), this.options.categories, 'id', 'name');
 
     this.$modal.find('.js-cascading-item').cascading({
-      url: that.url,
+      url: $.url('regions.json', {parentId: '中国'}),
       valueKey: 'label'
     });
 
@@ -79,7 +78,7 @@ define([
 
     this.$table = this.$table.dataTable({
       ajax: {
-        url: that.url
+        url: that.options.url
       },
       columns: [
         {
