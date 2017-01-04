@@ -11,7 +11,7 @@ class V20161119164252CreateShopUsersTable extends BaseMigration
      */
     public function up()
     {
-        $this->scheme->table('shopUsers')
+        $this->schema->table('shopUsers')
             ->id()
             ->int('appId')
             ->int('shopId')
@@ -28,6 +28,6 @@ class V20161119164252CreateShopUsersTable extends BaseMigration
      */
     public function down()
     {
-        $this->scheme->dropIfExists('shopUsers');
+        $this->schema->dropIfExists('shopUsers');
     }
 }

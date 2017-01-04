@@ -11,7 +11,7 @@ class V20161119163517CreateShopTable extends BaseMigration
      */
     public function up()
     {
-        $this->scheme->table('shop')
+        $this->schema->table('shop')
             ->id()
             ->int('wechatLocationId')->comment('微信门店编号 0未导入 -1导入失败')
             ->string('name')
@@ -35,6 +35,6 @@ class V20161119163517CreateShopTable extends BaseMigration
      */
     public function down()
     {
-        $this->scheme->dropIfExists('shop');
+        $this->schema->dropIfExists('shop');
     }
 }
