@@ -1,5 +1,5 @@
 <?= $block('css') ?>
-<link rel="stylesheet" href="<?= $asset('plugins/admin/assets/filter.css') ?>"/>
+<link rel="stylesheet" href="<?= $asset('plugins/admin/css/filter.css') ?>"/>
 <?= $block->end() ?>
 
 <script type="text/html" id="shop-popup-picker-tpl">
