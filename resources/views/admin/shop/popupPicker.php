@@ -65,6 +65,7 @@
               <th>电话</th>
               <th>类目</th>
               <th>地址</th>
+              <th>状态</th>
               <th>操作</th>
             </tr>
             </thead>

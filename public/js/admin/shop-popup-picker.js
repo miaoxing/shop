@@ -103,6 +103,12 @@ define([
           }
         },
         {
+          data: 'enable',
+          render: function (data, type, full) {
+            return data === '0' ? '已禁用' : '启用中';
+          }
+        },
+        {
           data: 'id',
           render: function (data, type, full) {
             full.selected = typeof that.options.data[data] !== 'undefined';
