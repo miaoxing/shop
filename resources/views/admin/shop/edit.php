@@ -248,7 +248,7 @@
     });
   });
 
-  require(['plugins/user/assets/admin/usersPicker'], function (UsersPicker) {
+  require(['plugins/user/js/admin/users-picker'], function (UsersPicker) {
     var usersPicker = new Object(UsersPicker);
     usersPicker.init({
       $el: $('.shop-users-picker'),
