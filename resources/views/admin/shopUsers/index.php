@@ -20,10 +20,10 @@
       <div class="well form-well m-b">
         <form class="js-user-form form-horizontal filter-form" role="form">
           <div class="form-group form-group-sm">
-            <label class="col-md-1 control-label" for="nickName">用户昵称：</label>
+            <label class="col-md-1 control-label" for="nick-name">用户昵称：</label>
 
             <div class="col-md-3">
-              <input type="text" class="form-control" id="nickName" name="nickName">
+              <input type="text" class="form-control" id="nick-name" name="nickName">
             </div>
 
             <label class="col-md-1 control-label" for="name">姓名：</label>
@@ -44,12 +44,12 @@
       <table id="record-table" class="record-table table table-bordered table-hover">
         <thead>
         <tr>
-          <th style="width: 260px">用户</th>
-          <th style="width: 130px">姓名</th>
-          <th style="width: 130px">手机</th>
-          <th style="width: 130px">地区</th>
+          <th class="t-12">用户</th>
+          <th class="t-8">姓名</th>
+          <th class="t-8">手机</th>
+          <th class="t-12">地区</th>
           <th>链接</th>
-          <th style="width: 150px">注册时间</th>
+          <th class="t-8">注册时间</th>
         </tr>
         </thead>
         <tbody>

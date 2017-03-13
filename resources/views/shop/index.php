@@ -27,7 +27,8 @@
     <div class="row m-b-sm">
       <div class="col-xs-12">
         <div class="input-group">
-          <input class="form-control no-shadow" type="text" name="search" value="<?= $e($req['search']) ?>" placeholder="请输入名称查询">
+          <input class="form-control no-shadow" type="text" name="search" value="<?= $e($req['search']) ?>"
+            placeholder="请输入名称查询">
           <span class="input-group-btn">
             <button class="btn btn-default" type="submit">查询</button>
           </span>
@@ -41,7 +42,8 @@
 <?php foreach ($shops as $shop) : ?>
   <ul class="shop-list list">
     <li class="list-item-link">
-      <a class="list-item has-feedback" href="<?= $shop['linkTo']['type'] ? $wei->linkTo->getUrl($shop['linkTo']) : 'javascript:;' ?>">
+      <a class="list-item has-feedback"
+        href="<?= $shop['linkTo']['type'] ? $wei->linkTo->getUrl($shop['linkTo']) : 'javascript:;' ?>">
         <h4 class="list-heading">
           <?= $shop['name'] ?>
           <span class="js-distance-<?= $shop['id'] ?> shop-distance text-muted"></span>
@@ -63,18 +65,21 @@
     <?php endif ?>
 
     <li class="list-item-link">
-      <a class="list-item text-muted has-feedback" href="http://api.map.baidu.com/marker?location=<?= $shop['lat'] ?>,<?= $shop['lng'] ?>&title=<?= $shop['name'] ?>&content=<?= $shop['name'] ?>&output=html">
+      <a class="list-item text-muted has-feedback"
+        href="http://api.map.baidu.com/marker?location=<?= $shop['lat'] ?>,
+        <?= $shop['lng'] ?>&title=<?= $shop['name'] ?>&content=<?= $shop['name'] ?>&output=html">
         <i class="shop-icon">&#xe601;</i>
         <?= $shop['province'] . $shop['city'] . $shop['address'] ?>
         <i class="bm-angle-right list-feedback"></i>
       </a>
     </li>
 
-    <?php if ($users[$shop['id']]) :  ?>
+    <?php if ($users[$shop['id']]) : ?>
       <li class="list-item-link">
         <a class="list-item text-muted has-feedback" href="<?= $url('shop/%s/users', $shop['id']) ?>">
           <i class="shop-icon">&#xe600;</i>
-          <?= $userTitle ?>: <?= implode(', ', $users[$shop['id']]) ?><?= count($users[$shop['id']]) === 3 ? '...' : ''  ?>
+          <?= $userTitle ?>: <?= implode(', ', $users[$shop['id']]) ?>
+          <?= count($users[$shop['id']]) === 3 ? '...' : '' ?>
           <i class="bm-angle-right list-feedback"></i>
         </a>
       </li>
@@ -105,7 +110,7 @@
       return;
     }
 
-    $.each (shops, function (key, shop) {
+    $.each(shops, function (key, shop) {
       var distanceText = '';
       var distance = getDistance(shop, location);
       if (distance > 1000) {
@@ -146,7 +151,8 @@
     var radLat2 = rad(end.lat);
     var a = radLat1 - radLat2;
     var b = rad(start.lng) - rad(end.lng);
-    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) +
+      Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
     s = s * EARTH_RADIUS;
     s = Math.round(s * 10000) / 10;
     return parseInt(s);

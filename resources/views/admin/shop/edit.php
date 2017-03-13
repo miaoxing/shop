@@ -1,17 +1,8 @@
 <?php $view->layout() ?>
 
-<style type="text/css">
-  #map {
-    width: 100%;
-    height: 400px;
-    border: 1px solid #d5d5d5;
-  }
-
-  /* 修复Bootstrap样式和百度地图标签样式冲突 */
-  .BMapLabel {
-    max-width: inherit;
-  }
-</style>
+<?= $block('css') ?>
+<link rel="stylesheet" href="<?= $asset('plugins/shop/css/admin/shop.css') ?>"/>
+<?= $block->end() ?>
 
 <div class="page-header">
   <div class="pull-right">
@@ -47,14 +38,14 @@
       </div>
 
       <div class="form-group">
-        <label class="col-sm-2 control-label" for="branchName">
+        <label class="col-sm-2 control-label" for="branch-name">
           分店名
         </label>
 
         <div class="col-sm-4">
-          <input type="text" class="form-control" name="branchName" id="branchName">
+          <input type="text" class="form-control" name="branchName" id="branch-name">
         </div>
-        <label for="branchName" class="col-sm-6 help-text">
+        <label for="branch-name" class="col-sm-6 help-text">
           分店名不得包含区域地址信息（如，“北京国贸店”中的“北京”）
         </label>
       </div>
@@ -70,15 +61,15 @@
       </div>
 
       <div class="form-group">
-        <label class="col-lg-2 control-label" for="linkTo">
+        <label class="col-lg-2 control-label" for="link-to">
           介绍链接
         </label>
 
         <div class="col-lg-4">
-          <p class="js-link-to form-control-static" id="linkTo"></p>
+          <p class="js-link-to form-control-static" id="link-to"></p>
         </div>
 
-        <label class="col-lg-6 help-text" for="linkTo">
+        <label class="col-lg-6 help-text" for="link-to">
           设置后,前台点击门店名称可跳转到相应的页面
         </label>
       </div>
@@ -152,7 +143,8 @@
         </label>
 
         <div class="col-sm-4">
-          <input type="text" class="form-control" name="address" id="address" data-rule-required="true" placeholder="请输入地址搜索">
+          <input type="text" class="form-control" name="address" id="address" data-rule-required="true"
+            placeholder="请输入地址搜索">
         </div>
 
         <label class="col-lg-6 help-text" for="address">

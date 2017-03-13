@@ -1,6 +1,7 @@
 <?php
 
 namespace plugins\shop\docs {
+
     /**
      * @property    \Miaoxing\Shop\Service\shop $shop 门店
      * @method      \Miaoxing\Shop\Service\shop|\Miaoxing\Shop\Service\shop[] shop()
@@ -14,6 +15,7 @@ namespace plugins\shop\docs {
 }
 
 namespace {
+
     /**
      * @return \plugins\shop\docs\AutoComplete
      */

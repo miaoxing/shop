@@ -7,7 +7,8 @@
 <ul class="list list-intend">
   <?php foreach ($shopUsers as $shopUser) : ?>
     <li class="list-item-link">
-      <a class="js-user-link list-item has-feedback" href="<?= $shopUser['linkTo']['type'] ? $wei->linkTo->getUrl($shopUser['linkTo']) : 'javascript:;' ?>">
+      <a class="js-user-link list-item has-feedback"
+        href="<?= $shopUser['linkTo']['type'] ? $wei->linkTo->getUrl($shopUser['linkTo']) : 'javascript:;' ?>">
         <div class="list-col list-col-left shop-user-img">
           <img src="<?= $shopUser->getUser()->getHeadImg() ?>">
         </div>

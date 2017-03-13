@@ -33,13 +33,13 @@
       <table id="record-table" class="table table-bordered table-hover">
         <thead>
         <tr>
-          <th style="width:40px;"></th>
+          <th class="t-2"></th>
           <th>名称</th>
           <th>电话</th>
           <th>类目</th>
           <th>地址</th>
           <?php if ($enableWechatCards) : ?>
-            <th style="width: 100px;">微信同步结果</th>
+            <th class="t-8">微信同步结果</th>
           <?php endif ?>
           <th>启用</th>
           <th>操作</th>
@@ -48,7 +48,7 @@
         <tbody>
         </tbody>
       </table>
-      <div class="well form-well" style="margin-top: 1px; box-shadow:none">
+      <div class="well form-well">
         <form class="form-inline" role="form">
           <label>
             <input class="ace" type="checkbox" id="check-all">
@@ -86,7 +86,8 @@
           data: 'id',
           sClass: 'text-center',
           render: function (data) {
-            return '<label><input type="checkbox" class="js-id ace" value="' + data + '"><span class="lbl"></span></label>'
+            return '<label><input type="checkbox" class="js-id ace" value="' + data + '">' +
+              '<span class="lbl"></span></label>';
           }
         },
         {
@@ -283,7 +284,8 @@
     <a href="<%= $.url('admin/shop/edit', {id: id}) %>" title="编辑">
       <i class="fa fa-edit bigger-130"></i>
     </a>
-    <a class="text-danger delete-record" data-href="<%= $.url('admin/shop/destroy', {id: id}) %>" href="javascript:;" title="删除">
+    <a class="text-danger delete-record" data-href="<%= $.url('admin/shop/destroy', {id: id}) %>" href="javascript:"
+      title="删除">
       <i class="fa fa-trash-o bigger-130"></i>
     </a>
   </div>

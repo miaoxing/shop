@@ -86,13 +86,13 @@ define([
         },
         {
           data: 'phone',
-          render: function (data, type, full) {
+          render: function (data) {
             return data || '-';
           }
         },
         {
           data: 'category',
-          render: function (data, type, full) {
+          render: function (data) {
             return data || '-';
           }
         },
@@ -104,7 +104,7 @@ define([
         },
         {
           data: 'enable',
-          render: function (data, type, full) {
+          render: function (data) {
             return data === '0' ? '已禁用' : '启用中';
           }
         },

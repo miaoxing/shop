@@ -129,8 +129,10 @@ class Shop extends \miaoxing\plugin\BaseController
     public function getLatLngByAddress($address)
     {
         $address = urlencode($address);
+        $baiduUrl = 'http://api.map.baidu.com/geocoder/v2/?address=';
+        $baiduUrl .= $address . '&output=json&ak=lquVnNEcl0pEiMgZFXcnQ5Kq';
 
-        return wei()->http->getJson('http://api.map.baidu.com/geocoder/v2/?address=' . $address . '&output=json&ak=lquVnNEcl0pEiMgZFXcnQ5Kq');
+        return wei()->http->getJson($baiduUrl);
     }
 
     /**
