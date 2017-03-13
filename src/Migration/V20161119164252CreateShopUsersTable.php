@@ -17,7 +17,7 @@ class V20161119164252CreateShopUsersTable extends BaseMigration
             ->int('shopId')
             ->int('userId')
             ->text('linkTo')
-            ->timestamps()
+            ->timestampsV1()
             ->int('createUser')
             ->int('updateUser')
             ->exec();

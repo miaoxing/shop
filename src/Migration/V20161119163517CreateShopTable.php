@@ -25,7 +25,7 @@ class V20161119163517CreateShopTable extends BaseMigration
             ->string('lng', 64)
             ->string('phone', 32)
             ->text('linkTo')
-            ->timestamps()
+            ->timestampsV1()
             ->bool('enable')
             ->exec();
     }
