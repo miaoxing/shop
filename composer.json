@@ -7,6 +7,8 @@
   "license": "MIT",
   "require": {
     "miaoxing/app": "dev-master@dev",
+    "miaoxing/admin": "dev-master@dev",
+    "miaoxing/user": "dev-master@dev",
     "miaoxing/region": "dev-master@dev",
     "miaoxing/link-to": "dev-master@dev"
   },
