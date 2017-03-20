@@ -158,7 +158,7 @@
         </label>
 
         <div class="col-sm-6">
-          <div id="map"></div>
+          <div id="map" class="map"></div>
         </div>
       </div>
 
