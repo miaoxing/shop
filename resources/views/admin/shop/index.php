@@ -42,6 +42,7 @@
             <th class="t-8">微信同步结果</th>
           <?php endif ?>
           <th>启用</th>
+          <?php $event->trigger('adminShopList') ?>
           <th>操作</th>
         </tr>
         </thead>
@@ -136,6 +137,7 @@
             });
           }
         },
+        <?php $event->trigger('adminShopListContent') ?>
         {
           data: 'id',
           sClass: 'text-center',

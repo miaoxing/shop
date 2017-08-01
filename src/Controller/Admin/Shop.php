@@ -86,7 +86,10 @@ class Shop extends \miaoxing\plugin\BaseController
      */
     public function updateAction($req)
     {
-        $shop = wei()->shop()->findOrInitById($req['id'])->save($req);
+        $shop = wei()->shop()->findOrInitById($req['id']);
+        $this->event->trigger('preShopSave', $shop);
+        $shop->save($req);
+
         wei()->shopUser()->curApp()->delete(['shopId' => $shop['id']]);
         if ($req['userIds']) {
             foreach ($req['userIds'] as $userId) {
