@@ -1,46 +1,32 @@
 <?php $view->layout() ?>
 
-<div class="page-header">
-  <div class="pull-right">
-    <form id="shop-upload-form" class="form-horizontal" method="post" role="form">
-      <a class="btn btn-success" href="<?= $url('admin/shop/new') ?>">添加门店</a>
+<?= $block('header-actions') ?>
+<form id="shop-upload-form" class="form-horizontal" method="post" role="form">
+  <a class="btn btn-success" href="<?= $url('admin/shop/new') ?>">添加门店</a>
 
-      <?php if ($enableWechatCards) : ?>
-        <a class="btn btn-success" id="sync-with-wechat">
-          <i class="fa fa-refresh"></i> 与微信同步
-        </a>
-      <?php endif ?>
-
-      <div class="excel-fileinput fileinput fileinput-new" data-provides="fileinput">
-                <span class="btn btn-white btn-file">
-                    <span class="fileinput-new">从Excel导入</span>
-                    <span class="fileinput-exists">重新上传Excel</span>
-                    <input type="file" name="file">
-                </span>
-        <a href="<?= $asset('assets/admin/shop/门店列表.xlsx') ?>" class="btn btn-link">下载范例</a>
-      </div>
-    </form>
+  <div class="excel-fileinput fileinput fileinput-new" data-provides="fileinput">
+    <span class="btn btn-white btn-file">
+      <span class="fileinput-new">从Excel导入</span>
+      <span class="fileinput-exists">重新上传Excel</span>
+      <input type="file" name="file">
+    </span>
+    <a href="<?= $asset('assets/admin/shop/门店列表.xlsx') ?>" class="btn btn-link">下载范例</a>
   </div>
-  <h1>
-    门店管理
-  </h1>
-</div>
+</form>
+<?= $block->end() ?>
+
 <!-- /.page-header -->
 <div class="row">
   <div class="col-xs-12">
     <!-- PAGE CONTENT BEGINS -->
     <div class="table-responsive">
-      <table id="record-table" class="table table-bordered table-hover">
+      <table class="js-shop-table record-table table table-bordered table-hover">
         <thead>
         <tr>
           <th class="t-2"></th>
           <th>名称</th>
           <th>电话</th>
-          <th>类目</th>
           <th>地址</th>
-          <?php if ($enableWechatCards) : ?>
-            <th class="t-8">微信同步结果</th>
-          <?php endif ?>
           <th>启用</th>
           <?php $event->trigger('adminShopList') ?>
           <th>操作</th>
@@ -78,7 +64,7 @@
       recordTable.reload($(this).serialize());
     });
 
-    var recordTable = $('#record-table').dataTable({
+    var recordTable = $('.js-shop-table').dataTable({
       ajax: {
         url: $.queryUrl('admin/shop.json')
       },
@@ -98,37 +84,13 @@
           data: 'phone'
         },
         {
-          data: 'category',
-          sClass: 'text-center'
-        },
-        {
           data: 'id',
-          sClass: 'text-center',
           render: function (data, type, full) {
             return full.province + full.city + full.address;
           }
         },
-        <?php if ($enableWechatCards) : ?>
-        {
-          data: 'wechatLocationId',
-          sClass: 'text-center',
-          render: function (data, type, full) {
-            switch (data) {
-              case '0':
-                return '未同步';
-
-              case '-1':
-                return '数据校验失败';
-
-              default:
-                return '已同步';
-            }
-          }
-        },
-        <?php endif ?>
         {
           data: 'enable',
-          sClass: 'text-center',
           render: function (data, type, full) {
             return template.render('checkbox-col-tpl', {
               id: full.id,
@@ -140,7 +102,6 @@
         <?php $event->trigger('adminShopListContent') ?>
         {
           data: 'id',
-          sClass: 'text-center',
           render: function (data, type, full) {
             return template.render('table-actions', full)
           }

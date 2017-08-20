@@ -8,12 +8,14 @@ class Shop extends \miaoxing\plugin\BaseController
 
     protected $actionPermissions = [
         'index' => '列表',
-        'add,' => '添加',
+        'new,create' => '添加',
         'edit,update,updateShop' => '修改',
         'destroy,batchDel' => '删除',
         'upload' => '批量上传',
         'syncWithWechat' => '与微信同步',
     ];
+
+    protected $displayPageHeader = true;
 
     public function indexAction($req)
     {
@@ -44,16 +46,20 @@ class Shop extends \miaoxing\plugin\BaseController
                     $shops->andWhere('wechatLocationId NOT IN (0, -1)');
                 }
 
+                $shops->findAll();
+                $data = $shops->toArray();
+
+                // 触发查找后事件
+                $this->event->trigger('postAdminShopListFind', [$req, &$data]);
+
                 return $this->suc([
-                    'data' => $shops->fetchAll(),
+                    'data' => $data,
                     'page' => $req['page'],
                     'rows' => $req['rows'],
                     'records' => $shops->count(),
                 ]);
 
             default:
-                $enableWechatCards = wei()->setting('wechat.cards');
-
                 return get_defined_vars();
         }
     }
@@ -65,7 +71,8 @@ class Shop extends \miaoxing\plugin\BaseController
 
     public function editAction($req)
     {
-        $shop = wei()->shop()->findOrInitById($req['id']);
+        $shop = wei()->shop()->findId($req['id']);
+
         $shopUsers = wei()->shopUser()
             ->curApp()
             ->andWhere(['shopId' => $req['id']])
@@ -79,6 +86,11 @@ class Shop extends \miaoxing\plugin\BaseController
         return get_defined_vars();
     }
 
+    public function createAction($req)
+    {
+        return $this->updateAction($req);
+    }
+
     /**
      * 保存门店信息
      * @param $req
@@ -86,8 +98,15 @@ class Shop extends \miaoxing\plugin\BaseController
      */
     public function updateAction($req)
     {
+        // 清理空数组的数据
+        if (!$req['photo_list'][0]['photo_url']) {
+            $req['photo_list'] = [];
+        }
+
         $shop = wei()->shop()->findOrInitById($req['id']);
+
         $this->event->trigger('preShopSave', $shop);
+
         $shop->save($req);
 
         wei()->shopUser()->curApp()->delete(['shopId' => $shop['id']]);
@@ -95,6 +114,13 @@ class Shop extends \miaoxing\plugin\BaseController
             foreach ($req['userIds'] as $userId) {
                 wei()->shopUser()->curApp()->findOrInit(['userId' => $userId, 'shopId' => $shop['id']])->save();
             }
+        }
+
+        $ret = $this->event->until('postShopSave', $shop);
+        if ($ret) {
+            // 返回门店编号以便前台使用
+            $ret['id'] = $shop['id'];
+            return $ret;
         }
 
         return $this->suc();
@@ -143,21 +169,46 @@ class Shop extends \miaoxing\plugin\BaseController
      */
     public function destroyAction($req)
     {
-        wei()->shop()->findOneById($req['id'])->destroy();
+        $shop = wei()->shop()->findOneById($req['id']);
+
+        $ret = wei()->event->until('preShopDestroy', [$shop]);
+        if ($ret) {
+            return $ret;
+        }
+
+        $shop->destroy();
 
         return $this->suc();
     }
 
     /**
      * 批量删除
+     *
      * @param $req
      * @return $this
      */
     public function batchDelAction($req)
     {
         foreach ((array) $req['ids'] as $key => $value) {
-            wei()->shop()->findOneById($value)->destroy();
+            $ret = $this->destroy($value);
+            if ($ret['code'] !== 1) {
+                return $ret;
+            }
         }
+
+        return $this->suc();
+    }
+
+    protected function destroy($id)
+    {
+        $shop = wei()->shop()->findOneById($id);
+
+        $ret = wei()->event->until('preShopDestroy', [$shop]);
+        if ($ret) {
+            return $ret;
+        }
+
+        $shop->destroy();
 
         return $this->suc();
     }
