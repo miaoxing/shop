@@ -120,6 +120,7 @@ class Shop extends \miaoxing\plugin\BaseController
         if ($ret) {
             // 返回门店编号以便前台使用
             $ret['id'] = $shop['id'];
+
             return $ret;
         }
 
