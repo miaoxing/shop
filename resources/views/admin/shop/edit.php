@@ -281,9 +281,18 @@ $view->layout();
 <?= $block('js') ?>
 <script>
   var shop = <?= $shop->toJson() ?>;
-  require(['linkTo', 'form', 'validator', 'comps/jquery-baidu-map-picker/jquery-baidu-map-picker', 'plugins/admin/js/image-input'], function (linkTo) {
+  require([
+    'linkTo', 'form', 'validator',
+    'comps/jquery-baidu-map-picker/jquery-baidu-map-picker',
+    'plugins/admin/js/image-input',
+    'plugins/app/libs/jquery.populate/jquery.populate',
+    'comps/select2/select2.min',
+    'css!comps/select2/select2',
+    'css!comps/select2-bootstrap-css/select2-bootstrap'
+  ], function () {
+  ], function () {
     $('#shop-form')
-      .loadJSON(shop)
+      .populate(shop)
       .ajaxForm({
         url: '<?= $url('admin/shop/update') ?>',
         dataType: 'json',
@@ -324,9 +333,17 @@ $view->layout();
       autocompleteEl: '#address'
     });
 
+    var photoUrls = [];
+    $.each(shop.photo_list, function (i, photo) {
+      photoUrls.push(photo.photo_url);
+    });
     $('.js-image-upload').imageUploadInput({
       maxFileCount: 10,
-      data: shop.photo_list
+      data: photoUrls
+    });
+
+    $('.js-categories').select2({
+      maximumSelectionSize: 3
     });
   });
 
@@ -343,16 +360,6 @@ $view->layout();
     usersPicker.init({
       $el: $('.shop-users-picker'),
       users: <?= json_encode($users); ?>
-    });
-  });
-
-  require([
-    'comps/select2/select2.min',
-    'css!comps/select2/select2',
-    'css!comps/select2-bootstrap-css/select2-bootstrap'
-  ], function () {
-    $('.js-categories').select2({
-      maximumSelectionSize: 3
     });
   });
 </script>
