@@ -290,7 +290,6 @@ $view->layout();
     'css!comps/select2/select2',
     'css!comps/select2-bootstrap-css/select2-bootstrap'
   ], function () {
-  ], function () {
     $('#shop-form')
       .populate(shop)
       .ajaxForm({
