@@ -15,7 +15,7 @@ class V20161119163517CreateShopTable extends BaseMigration
             ->id()
             ->int('wechatLocationId')->comment('微信门店编号 0未导入 -1导入失败')
             ->bigInt('wechat_poi_id')
-            ->int('qrcode_scene_id')
+            ->string('source_code', 32)->comment('来源的标识')
             ->string('name')
             ->string('branchName', 32)->comment('分店名')
             ->text('photo_list')
