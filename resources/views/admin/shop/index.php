@@ -241,15 +241,14 @@
 
 <script id="table-actions" type="text/html">
   <div class="action-buttons">
-    <a href="<%= $.url('admin/shop-users', {id: id}) %>" target="_blank" title="查看店员">
-      <i class="fa fa-group bigger-130"></i>
+    <a href="<%= $.url('admin/shop-users', {id: id}) %>">
+      店员管理
     </a>
-    <a href="<%= $.url('admin/shop/edit', {id: id}) %>" title="编辑">
-      <i class="fa fa-edit bigger-130"></i>
+    <a href="<%= $.url('admin/shop/edit', {id: id}) %>">
+      编辑
     </a>
-    <a class="text-danger delete-record" data-href="<%= $.url('admin/shop/destroy', {id: id}) %>" href="javascript:"
-      title="删除">
-      <i class="fa fa-trash-o bigger-130"></i>
+    <a class="text-danger delete-record" data-href="<%= $.url('admin/shop/destroy', {id: id}) %>" href="javascript:">
+      删除
     </a>
   </div>
 </script>
