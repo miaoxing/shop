@@ -105,4 +105,33 @@ class Shop extends \miaoxing\plugin\BaseModel
     {
         return require wei()->view->getFile('@shop/../data/categories.php');
     }
+
+    public function create($req)
+    {
+        // 清理空数组的数据
+        if (!$req['photo_list'][0]['photo_url']) {
+            $req['photo_list'] = [];
+        }
+
+        $this->event->trigger('preShopSave', $this);
+
+        $this->save($req);
+
+        wei()->shopUser()->curApp()->delete(['shopId' => $this['id']]);
+        if ($req['userIds']) {
+            foreach ($req['userIds'] as $userId) {
+                wei()->shopUser()->curApp()->findOrInit(['userId' => $userId, 'shopId' => $this['id']])->save();
+            }
+        }
+
+        $ret = $this->event->until('postShopSave', $this);
+        if ($ret) {
+            // 返回门店编号以便前台使用
+            $ret['id'] = $this['id'];
+
+            return $ret;
+        }
+
+        return $this->suc();
+    }
 }

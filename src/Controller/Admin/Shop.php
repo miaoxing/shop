@@ -98,33 +98,11 @@ class Shop extends \miaoxing\plugin\BaseController
      */
     public function updateAction($req)
     {
-        // 清理空数组的数据
-        if (!$req['photo_list'][0]['photo_url']) {
-            $req['photo_list'] = [];
-        }
+        $shop = wei()->shop()->findId($req['id']);
 
-        $shop = wei()->shop()->findOrInitById($req['id']);
+        $ret = $shop->create($req);
 
-        $this->event->trigger('preShopSave', $shop);
-
-        $shop->save($req);
-
-        wei()->shopUser()->curApp()->delete(['shopId' => $shop['id']]);
-        if ($req['userIds']) {
-            foreach ($req['userIds'] as $userId) {
-                wei()->shopUser()->curApp()->findOrInit(['userId' => $userId, 'shopId' => $shop['id']])->save();
-            }
-        }
-
-        $ret = $this->event->until('postShopSave', $shop);
-        if ($ret) {
-            // 返回门店编号以便前台使用
-            $ret['id'] = $shop['id'];
-
-            return $ret;
-        }
-
-        return $this->suc();
+        return $ret;
     }
 
     public function updateShopAction($req)
@@ -233,82 +211,5 @@ class Shop extends \miaoxing\plugin\BaseController
         }
 
         return $this->suc();
-    }
-
-    /**
-     * 与微信同步门店
-     */
-    public function syncWithWechatAction()
-    {
-        $counts = [
-            'created' => 0,
-            'updated' => 0,
-            'synced' => 0, // 总共同步了几个过去
-            'syncFailed' => 0, // 失败了几个
-        ];
-
-        $account = wei()->wechatAccount->getCurrentAccount();
-        $api = $account->createApiService();
-
-        // Step1 拉取微信的门店列表,同步到本地
-        $locations = $api->batchGetCardLocation();
-        if (!$locations) {
-            return $this->err($api->getMessage());
-        }
-
-        $this->logger->info('Get card locations', $locations['location_list']);
-        foreach ($locations['location_list'] as $location) {
-            $shop = wei()->shop()->findOrInit(['wechatLocationId' => $location['id']]);
-
-            $shop->isNew() ? $counts['created']++ : $counts['updated']++;
-
-            $shop->save([
-                'name' => $location['name'],
-                'phone' => $location['phone'],
-                'address' => $location['address'],
-                'lng' => $location['longitude'],
-                'lat' => $location['latitude'],
-            ]);
-        }
-
-        // Step2 将未同步的门店,同步到微信中
-        $data = [];
-        $notSyncedShops = wei()->shop()->findAll(['wechatLocationId' => ['0', '-1']]);
-        foreach ($notSyncedShops as $shop) {
-            $data[] = [
-                'business_name' => $shop['name'],
-                'branch_name' => $shop['branchName'],
-                'province' => $shop['province'],
-                'city' => $shop['city'],
-                'district' => '', // 暂无
-                'address' => $shop['address'],
-                'telephone' => $shop['phone'],
-                'category' => $shop['category'],
-                'longitude' => $shop['lng'],
-                'latitude' => $shop['lat'],
-            ];
-        }
-
-        // 只同步未同步的数据
-        if ($data) {
-            $result = $api->batchAddCardLocation(['location_list' => $data]);
-            if (!$result) {
-                return $this->err($api->getMessage());
-            }
-
-            // 记录返回的编号
-            foreach ($notSyncedShops as $index => $shop) {
-                $shop['wechatLocationId'] = $result['location_id_list'][$index];
-                if ($shop['wechatLocationId'] == -1) {
-                    ++$counts['syncFailed'];
-                }
-                $shop->save();
-            }
-        }
-
-        $counts['synced'] = count($notSyncedShops);
-        $message = vsprintf('同步完成,共本地新增了%s个,更新了%s个,远程同步了%s个,失败了%s个', $counts);
-
-        return $this->suc($message);
     }
 }

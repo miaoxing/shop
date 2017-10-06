@@ -19,7 +19,6 @@ $view->layout();
       <fieldset>
         <legend class="text-muted bigger-130">
           基本信息
-          <small class="smaller-70">如果用于微信门店，基本信息提交后不可修改</small>
         </legend>
         <div class="form-group">
           <label class="col-sm-2 control-label" for="name">
@@ -116,7 +115,6 @@ $view->layout();
       <fieldset>
         <legend class="text-muted bigger-130">
           服务信息
-          <small class="smaller-70">如果用于微信门店，该部分为公共编辑信息，每个添加了该门店的商户均可提交修改意见，并在审核后选择性采纳</small>
         </legend>
 
         <div class="form-group">
@@ -223,7 +221,6 @@ $view->layout();
       <fieldset>
         <legend class="text-muted bigger-130">
           更多信息
-          <small class="smaller-70">该部分为本平台信息，可以按需修改，无需审核</small>
         </legend>
 
         <div class="form-group">

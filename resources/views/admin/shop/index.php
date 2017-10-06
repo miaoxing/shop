@@ -204,26 +204,6 @@
       $(this).fileinput('clear');
     });
 
-    $('#sync-with-wechat').click(function () {
-      var icon = $(this).find('.fa-refresh');
-      icon.addClass('fa-spin');
-      $.ajax({
-        url: $.url('admin/shop/syncWithWechat'),
-        dataType: 'json',
-        success: function (result) {
-          if (result.code > 0) {
-            $.alert(result.message);
-          } else {
-            $.err(result.message);
-          }
-          recordTable.reload();
-        },
-        complete: function () {
-          icon.removeClass('fa-spin');
-        }
-      });
-    });
-
     // 切换状态
     recordTable.on('click', '.toggle-status', function () {
       var $this = $(this);
