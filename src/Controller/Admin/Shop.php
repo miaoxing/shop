@@ -42,10 +42,6 @@ class Shop extends \miaoxing\plugin\BaseController
                     $shops->andWhere(['city' => $req['city']]);
                 }
 
-                if ($req['wechatSynced']) {
-                    $shops->andWhere('wechatLocationId NOT IN (0, -1)');
-                }
-
                 $shops->findAll();
                 $data = $shops->toArray();
 
