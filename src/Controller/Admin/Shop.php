@@ -12,7 +12,6 @@ class Shop extends \miaoxing\plugin\BaseController
         'edit,update,updateShop' => '修改',
         'destroy,batchDel' => '删除',
         'upload' => '批量上传',
-        'syncWithWechat' => '与微信同步',
     ];
 
     protected $displayPageHeader = true;
