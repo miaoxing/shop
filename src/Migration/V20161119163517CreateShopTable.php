@@ -13,6 +13,7 @@ class V20161119163517CreateShopTable extends BaseMigration
     {
         $this->schema->table('shop')
             ->id()
+            ->string('out_id', 32)->comment('外部系统编号,可用于数据关联,同步等')
             ->int('wechatLocationId')->comment('微信门店编号 0未导入 -1导入失败')
             ->bigInt('wechat_poi_id')
             ->string('source_code', 32)->comment('来源的标识')

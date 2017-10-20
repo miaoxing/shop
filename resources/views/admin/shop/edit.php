@@ -246,6 +246,20 @@ $view->layout();
             <input type="text" class="form-control user-typeahead">
           </div>
         </div>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label" for="out-id">
+            外部编号
+          </label>
+
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="out-id" name="out_id">
+          </div>
+
+          <label class="col-lg-6 help-text" for="out-id">
+            可用于数据关联,同步等
+          </label>
+        </div>
       </fieldset>
 
       <?php $event->trigger('adminShopsEdit') ?>
