@@ -3,6 +3,8 @@
 namespace Miaoxing\Shop\Service;
 
 /**
+ * 店员
+ *
  * @property \Miaoxing\LinkTo\Service\LinkTo $linkTo
  */
 class ShopUser extends \miaoxing\plugin\BaseModel

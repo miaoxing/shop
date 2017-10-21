@@ -2,6 +2,9 @@
 
 namespace Miaoxing\Shop\Service;
 
+/**
+ * 门店
+ */
 class Shop extends \miaoxing\plugin\BaseModel
 {
     protected $createdAtColumn = 'created_at';
