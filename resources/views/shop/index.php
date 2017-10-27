@@ -65,9 +65,12 @@
     <?php endif ?>
 
     <li class="list-item-link">
-      <a class="list-item text-muted has-feedback"
-        href="http://api.map.baidu.com/marker?location=<?= $shop['lat'] ?>,
-        <?= $shop['lng'] ?>&title=<?= $shop['name'] ?>&content=<?= $shop['name'] ?>&output=html">
+      <a class="list-item text-muted has-feedback" href="http://api.map.baidu.com/marker?<?= http_build_query([
+        'location' => $shop['lat'] . ',' . $shop['lng'],
+        'title' => $shop['name'],
+        'content' => $shop['name'],
+        'output' => 'html',
+      ]) ?>">
         <i class="shop-icon">&#xe601;</i>
         <?= $shop['province'] . $shop['city'] . $shop['address'] ?>
         <i class="bm-angle-right list-feedback"></i>
