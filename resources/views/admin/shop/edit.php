@@ -124,8 +124,9 @@ $view->layout();
 
           <div class="col-lg-4">
             <div class="input-group js-upload-container">
-              <input type="file" class="js-image-upload"/>
-              <input type="hidden" id="photo-list" name="photo_list[][photo_url]" class="js-image-url"/>
+              <input type="file" class="js-image-upload" multiple/>
+              <input type="hidden" id="photo-list" name="photo_list[][photo_url]" class="js-image-url"
+                data-populate-ignor/>
             </div>
           </div>
           <label class="col-lg-6 help-text" for="thumb">
