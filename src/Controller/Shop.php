@@ -2,7 +2,7 @@
 
 namespace Miaoxing\Shop\Controller;
 
-class Shop extends \miaoxing\plugin\BaseController
+class Shop extends \Miaoxing\Plugin\BaseController
 {
     protected $guestPages = ['shop'];
 

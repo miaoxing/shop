@@ -2,7 +2,7 @@
 
 namespace Miaoxing\Shop\Controller;
 
-class ShopUsers extends \miaoxing\plugin\BaseController
+class ShopUsers extends \Miaoxing\Plugin\BaseController
 {
     public function indexAction($req)
     {

@@ -2,7 +2,7 @@
 
 namespace Miaoxing\Shop\Controller\Admin;
 
-class ShopUsers extends \miaoxing\plugin\BaseController
+class ShopUsers extends \Miaoxing\Plugin\BaseController
 {
     protected $controllerName = '店员管理';
 
