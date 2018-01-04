@@ -7,7 +7,7 @@ namespace Miaoxing\Shop\Service;
  *
  * @property \Miaoxing\LinkTo\Service\LinkTo $linkTo
  */
-class ShopUser extends \miaoxing\plugin\BaseModel
+class ShopUser extends \Miaoxing\Plugin\BaseModel
 {
     protected $table = 'shopUsers';
 
