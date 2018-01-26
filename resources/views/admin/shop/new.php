@@ -1,3 +1,3 @@
 <?php
 
-require 'edit.php';
+require $app->getControllerFile('edit');
