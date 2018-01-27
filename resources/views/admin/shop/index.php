@@ -57,7 +57,7 @@
 
 <?php require $view->getFile('admin:admin/checkboxCol.php') ?>
 
-<?= $block('js') ?>
+<?= $block->js() ?>
 <script>
   require(['dataTable', 'template', 'jquery-deparam', 'form'], function () {
     $('#search-form').loadParams().update(function () {

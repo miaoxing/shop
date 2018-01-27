@@ -1,6 +1,6 @@
 <?php $view->layout() ?>
 
-<?= $block('css') ?>
+<?= $block->css() ?>
 <link rel="stylesheet" href="<?= $asset('plugins/shop/css/shops.css') ?>">
 <?= $block->end() ?>
 
@@ -29,7 +29,7 @@
   <?php endif ?>
 </ul>
 
-<?= $block('js') ?>
+<?= $block->js() ?>
 <script>
   $('.js-user-link').click(function (e) {
     if ($(this).attr('href') == '#') {

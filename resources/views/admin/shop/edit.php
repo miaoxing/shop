@@ -3,7 +3,7 @@
 $view->layout();
 ?>
 
-<?= $block('css') ?>
+<?= $block->css() ?>
 <link rel="stylesheet" href="<?= $asset('plugins/shop/css/admin/shop.css') ?>"/>
 <?= $block->end() ?>
 
@@ -290,7 +290,7 @@ $view->layout();
 <?php require $this->getFile('user:admin/user/usersPicker.php') ?>
 <?php require $this->getFile('user:admin/user/richInfo.php') ?>
 
-<?= $block('js') ?>
+<?= $block->js() ?>
 <script>
   var shop = <?= $shop->toJson() ?>;
   require([

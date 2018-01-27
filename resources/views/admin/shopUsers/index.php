@@ -1,6 +1,6 @@
 <?php $view->layout() ?>
 
-<?= $block('css') ?>
+<?= $block->css() ?>
 <link rel="stylesheet" href="<?= $asset('plugins/admin/css/filter.css') ?>"/>
 <?= $block->end() ?>
 
@@ -72,7 +72,7 @@
 <?php require $view->getFile('user:admin/user/richInfo.php') ?>
 <?php require $view->getFile('@link-to/link-to/link-to.php') ?>
 
-<?= $block('js') ?>
+<?= $block->js() ?>
 <script>
   require(['assets/admin/user', 'dataTable', 'template', 'jquery-deparam', 'form', 'linkTo'], function () {
     $('.js-user-form').loadParams().update(function () {

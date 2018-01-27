@@ -1,6 +1,6 @@
 <?php $view->layout() ?>
 
-<?= $block('css') ?>
+<?= $block->css() ?>
 <link rel="stylesheet" href="<?= $asset('plugins/shop/css/shops.css') ?>">
 <?= $block->end() ?>
 
@@ -96,7 +96,7 @@
   </ul>
 <?php endif ?>
 
-<?= $block('js') ?>
+<?= $block->js() ?>
 <script>
   require(['comps/jquery-cascading/jquery-cascading'], function () {
     $('.js-cascading-item').cascading({
