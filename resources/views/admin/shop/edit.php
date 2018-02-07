@@ -118,18 +118,14 @@ $view->layout();
         </legend>
 
         <div class="form-group">
-          <label class="col-lg-2 control-label" for="images">
+          <label class="col-lg-2 control-label" for="photo-list">
             门店图片
           </label>
 
           <div class="col-lg-4">
-            <div class="input-group js-upload-container">
-              <input type="file" class="js-image-upload" multiple/>
-              <input type="hidden" id="photo-list" name="photo_list[][photo_url]" class="js-image-url"
-                data-populate-ignor/>
-            </div>
+            <input class="js-photo-list" id="photo-list" type="text"  name="photo_list[][photo_url]">
           </div>
-          <label class="col-lg-6 help-text" for="thumb">
+          <label class="col-lg-6 help-text" for="photo-list">
             如果用于微信门店，像素要求必须为640*340像素，支持.jpg .jpeg .bmp .png格式，大小不超过5M
           </label>
         </div>
@@ -296,7 +292,7 @@ $view->layout();
   require([
     'linkTo', 'form', 'validator',
     'comps/jquery-baidu-map-picker/jquery-baidu-map-picker',
-    'plugins/admin/js/image-input',
+    'plugins/admin/js/image-upload',
     'plugins/app/libs/jquery.populate/jquery.populate',
     'comps/select2/select2.min',
     'css!comps/select2/select2',
@@ -348,9 +344,9 @@ $view->layout();
     $.each(shop.photo_list, function (i, photo) {
       photoUrls.push(photo.photo_url);
     });
-    $('.js-image-upload').imageUploadInput({
-      maxFileCount: 10,
-      data: photoUrls
+    $('.js-photo-list').imageUpload({
+      max: 10,
+      images: photoUrls
     });
 
     $('.js-categories').select2({
