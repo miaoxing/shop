@@ -23,14 +23,14 @@ $view->layout();
         <div class="form-group">
           <label class="col-sm-2 control-label" for="name">
             <span class="text-warning">*</span>
-            门店名
+            名称
           </label>
 
           <div class="col-sm-4">
             <input type="text" class="form-control" name="name" id="name" data-rule-required="true">
           </div>
           <label for="name" class="col-sm-6 help-text">
-            门店名不得包含区域地址信息（如，北京市XXX公司）
+            名称不得包含区域地址信息（如，北京市XXX公司）
           </label>
         </div>
 
@@ -119,14 +119,14 @@ $view->layout();
 
         <div class="form-group">
           <label class="col-lg-2 control-label" for="photo-list">
-            门店图片
+            图片
           </label>
 
           <div class="col-lg-4">
             <input class="js-photo-list" id="photo-list" type="text"  name="photo_list[][photo_url]">
           </div>
           <label class="col-lg-6 help-text" for="photo-list">
-            如果用于微信门店，像素要求必须为640*340像素，支持.jpg .jpeg .bmp .png格式，大小不超过5M
+            支持.jpg .jpeg .bmp .png格式，大小不超过5M
           </label>
         </div>
 
@@ -140,7 +140,7 @@ $view->layout();
           </div>
 
           <label class="col-lg-6 help-text" for="phone">
-            固定电话需加区号；区号、分机号均用“-”连接；留空则前台不显示，如果用于微信门店，则必须填写电话
+            固定电话需加区号；区号、分机号均用“-”连接
           </label>
         </div>
 
@@ -230,19 +230,21 @@ $view->layout();
           </div>
 
           <label class="col-lg-6 help-text" for="link-to">
-            设置后,前台点击门店名称可跳转到相应的页面
+            设置后,前台点击名称可跳转到相应的页面
           </label>
         </div>
 
-        <div class="form-group">
-          <label class="col-lg-2 control-label">
-            选择店员
-          </label>
+        <?php if (wei()->shop->enableShopUser) { ?>
+          <div class="form-group">
+            <label class="col-lg-2 control-label">
+              选择店员
+            </label>
 
-          <div class="col-lg-4 shop-users-picker">
-            <input type="text" class="form-control user-typeahead">
+            <div class="col-lg-4 shop-users-picker">
+              <input type="text" class="form-control user-typeahead">
+            </div>
           </div>
-        </div>
+        <?php } ?>
 
         <div class="form-group">
           <label class="col-lg-2 control-label" for="out-id">

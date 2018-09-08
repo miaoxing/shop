@@ -16,6 +16,13 @@ class Shop extends \Miaoxing\Plugin\BaseController
 
     protected $displayPageHeader = true;
 
+    public function __construct(array $options = [])
+    {
+        parent::__construct($options);
+
+        $this->controllerName = wei()->shop->shopName . '管理';
+    }
+
     public function indexAction($req)
     {
         switch ($req['_format']) {

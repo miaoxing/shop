@@ -2,7 +2,7 @@
 
 <?= $block('header-actions') ?>
 <form id="shop-upload-form" class="form-horizontal" method="post" role="form">
-  <a class="btn btn-success" href="<?= $url('admin/shop/new') ?>">添加门店</a>
+  <a class="btn btn-success" href="<?= $url('admin/shop/new') ?>">添加<?= wei()->shop->shopName ?></a>
 
   <div class="excel-fileinput fileinput fileinput-new" data-provides="fileinput">
     <span class="btn btn-white btn-file">
@@ -121,7 +121,7 @@
         return $(this).val();
       }).get();
       if (ids == '') {
-        alert('请选择门店');
+        alert('请选择<?= wei()->shop->shopName ?>');
         return;
       }
       $.confirm('删除之后将无法恢复，确认吗?', function () {
@@ -221,9 +221,11 @@
 
 <script id="table-actions" type="text/html">
   <div class="action-buttons">
-    <a href="<%= $.url('admin/shop-users', {id: id}) %>">
-      店员管理
-    </a>
+    <?php if (wei()->shop->enableShopUser) { ?>
+      <a href="<%= $.url('admin/shop-users', {id: id}) %>">
+        店员管理
+      </a>
+    <?php } ?>
     <a href="<%= $.url('admin/shop/edit', {id: id}) %>">
       编辑
     </a>

@@ -2,11 +2,27 @@
 
 namespace Miaoxing\Shop\Service;
 
+use Miaoxing\Config\ConfigTrait;
+
 /**
  * 门店
+ *
+ * @property string $shopName
+ * @property bool $enableShopUser
  */
 class Shop extends \Miaoxing\Plugin\BaseModel
 {
+    use ConfigTrait;
+
+    protected $configs = [
+        'shopName' => [
+            'default' => '门店',
+        ],
+        'enableShopUser' => [
+            'default' => false,
+        ],
+    ];
+
     protected $createdAtColumn = 'created_at';
 
     protected $updatedAtColumn = 'updated_at';

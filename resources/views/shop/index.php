@@ -92,7 +92,7 @@
 
 <?php if (!$shops->length()) : ?>
   <ul class="list">
-    <li class="list-empty">暂无<?= $setting('shop.name') ?: '门店' ?>信息</li>
+    <li class="list-empty">暂无记录</li>
   </ul>
 <?php endif ?>
 

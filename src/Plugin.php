@@ -15,7 +15,7 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
         $navs[] = [
             'parentId' => 'settings',
             'url' => 'admin/shop/index',
-            'name' => '门店管理',
+            'name' => wei()->shop->shopName . '管理',
         ];
     }
 
@@ -23,7 +23,7 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
     {
         $links[] = [
             'typeId' => 'site',
-            'name' => '门店导航',
+            'name' => wei()->shop->shopName . '导航',
             'url' => 'shop/index',
         ];
     }
