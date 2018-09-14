@@ -49,7 +49,6 @@ $view->layout();
 
         <div class="form-group">
           <label class="col-sm-2 control-label" for="categories">
-            <span class="text-warning">*</span>
             类目
           </label>
 
@@ -60,10 +59,6 @@ $view->layout();
               <?php endforeach ?>
             </select>
           </div>
-
-          <label class="col-lg-6 help-text" for="categories">
-            可选择 3 个
-          </label>
         </div>
 
         <div class="form-group">
