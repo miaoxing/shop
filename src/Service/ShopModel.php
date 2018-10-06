@@ -4,7 +4,7 @@ namespace Miaoxing\Shop\Service;
 
 use Miaoxing\Plugin\Model\CastTrait;
 use Miaoxing\Plugin\Model\GetSetTrait;
-use Miaoxing\Plugin\Model\QuickQueryTrait;
+use Miaoxing\Plugin\Model\ReqQueryTrait;
 use Miaoxing\Shop\Metadata\ShopTrait;
 
 /**
@@ -14,7 +14,7 @@ class ShopModel extends Shop
 {
     use ShopTrait;
     use CastTrait;
-    use QuickQueryTrait;
+    use ReqQueryTrait;
     use GetSetTrait;
 
     protected $table = 'shop';
