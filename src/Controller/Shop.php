@@ -47,7 +47,7 @@ class Shop extends \Miaoxing\Plugin\BaseController
             }
         }
 
-        $headerTitle = '附近' . ($this->setting('shop.name') ?: '门店');
+        $this->page->setTitle('附近' . ($this->setting('shop.name') ?: '门店'));
         $userTitle = $this->setting('shop.titleUser') ?: '工作人员';
 
         return get_defined_vars();
@@ -78,7 +78,7 @@ class Shop extends \Miaoxing\Plugin\BaseController
 
         $shopUsers = $shop->getShopUsers();
 
-        $headerTitle = ($this->setting('shop.titleUser') ?: '工作人员') . '列表';
+        $this->page->setTitle(($this->setting('shop.titleUser') ?: '工作人员') . '列表');
 
         return get_defined_vars();
     }
