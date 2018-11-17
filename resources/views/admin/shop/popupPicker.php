@@ -82,5 +82,5 @@
 </script>
 
 <script type="text/html" id="shop-popup-picker-actions-tpl">
-  <a href="javascript:;" class="js-shop-popup-picker-toggle btn <%= selected ? 'selected btn-info' : 'btn-white' %>" data-id="<%= id %>"><%= selected ? '取消' : '选择' %></a>
+  <a href="javascript:;" class="js-shop-popup-picker-toggle btn <%= selected ? 'selected btn-info' : 'btn-default' %>" data-id="<%= id %>"><%= selected ? '取消' : '选择' %></a>
 </script>

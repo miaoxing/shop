@@ -5,7 +5,7 @@
   <a class="btn btn-success" href="<?= $url('admin/shop/new') ?>">添加<?= wei()->shop->shopName ?></a>
 
   <div class="excel-fileinput fileinput fileinput-new" data-provides="fileinput">
-    <span class="btn btn-white btn-file">
+    <span class="btn btn-default btn-file">
       <span class="fileinput-new">从Excel导入</span>
       <span class="fileinput-exists">重新上传Excel</span>
       <input type="file" name="file">
