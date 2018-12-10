@@ -33,7 +33,7 @@ class Shop extends \Miaoxing\Plugin\BaseController
         $users = [];
         $shops->findAll();
         foreach ($shops as $shop) {
-            $userIds = wei()->shopUser()->select('userId')->fetchAll(['shopId' => $shop['id']]);
+            $userIds = wei()->shopUser()->curApp()->select('userId')->fetchAll(['shopId' => $shop['id']]);
             if ($userIds) {
                 $userIds = wei()->coll->column($userIds, 'userId');
                 $users[$shop['id']] = wei()->user()
