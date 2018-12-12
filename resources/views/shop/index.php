@@ -98,55 +98,70 @@
 
 <?= $block->js() ?>
 <script>
-  require(['comps/jquery-cascading/jquery-cascading'], function () {
+  require([
+    'comps/jquery-cascading/jquery-cascading',
+    'comps/jquery.cookie/jquery.cookie'
+  ], function () {
+    $.cookie.json = true;
+
     $('.js-cascading-item').cascading({
       url: $.url('shop/regions.json'),
       labelKey: 'value',
       values: [$.req('province'), $.req('city')],
       defaultOption: '<option value="">全部</option>'
     });
-  });
 
-  var shops = <?= $shops->toJson(['id', 'lat', 'lng']) ?>;
-  getLocation(function (location) {
-    if (!location.lat) {
-      return;
-    }
-
-    $.each(shops, function (key, shop) {
-      var distanceText = '';
-      var distance = getDistance(shop, location);
-      if (distance > 1000) {
-        distance = (distance / 1000).toFixed(1);
-        distanceText = distance + ' km';
-      } else {
-        distanceText = parseInt(distance) + ' m';
+    var shops = <?= $shops->toJson(['id', 'lat', 'lng']) ?>;
+    getLocation(function (location, save) {
+      if (!location.lat) {
+        return;
       }
-      $('.js-distance-' + shop.id).text(distanceText);
-    });
-  });
 
-  function getLocation(callback) {
-    if (!navigator.geolocation) {
-      return;
+      if (save) {
+        $.cookie('position', location);
+      }
+
+      $.each(shops, function (key, shop) {
+        var distanceText = '';
+        var distance = getDistance(shop, location);
+        if (distance > 1000) {
+          distance = (distance / 1000).toFixed(1);
+          distanceText = distance + ' km';
+        } else {
+          distanceText = parseInt(distance) + ' m';
+        }
+        $('.js-distance-' + shop.id).text(distanceText);
+      });
+    });
+
+    function getLocation(callback) {
+      if (!navigator.geolocation) {
+        return;
+      }
+
+      var position = $.cookie('position');
+      if (position) {
+        callback(position);
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(function (position) {
+        callback({
+          lat: position.coords.latitude + '',
+          lng: position.coords.longitude + ''
+        }, true);
+      }, function (err) {
+        callback({
+          lat: false,
+          lng: false
+        }, true);
+      }, {
+        enableHighAcuracy: true,
+        timeout: 5000,
+        maximumAge: 3000
+      });
     }
-
-    navigator.geolocation.getCurrentPosition(function (position) {
-      callback({
-        lat: position.coords.latitude + '',
-        lng: position.coords.longitude + ''
-      });
-    }, function (err) {
-      callback({
-        lat: false,
-        lng: false
-      });
-    }, {
-      enableHighAcuracy: true,
-      timeout: 5000,
-      maximumAge: 3000
-    });
-  }
+  });
 
   function getDistance(start, end) {
     var EARTH_RADIUS = 6378.137;
