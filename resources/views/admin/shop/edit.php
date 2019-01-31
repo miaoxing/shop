@@ -320,8 +320,7 @@ $view->layout();
     $('.js-link-to').linkTo({
       data: shop.linkTo,
       hide: {
-        keyword: true,
-        decorator: true
+        keyword: true
       }
     });
 
