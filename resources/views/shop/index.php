@@ -7,7 +7,7 @@
 <form action="<?= $url('shop') ?>" method="get">
   <div class="container-fluid">
     <div class="row shop-selects m-y-sm">
-      <div class="col-xs-6">
+      <div class="col-6">
         <label class="select-wrapper">
           <select class="js-cascading-item province form-control no-shadow" name="province">
             <option>全部</option>
@@ -15,7 +15,7 @@
         </label>
       </div>
 
-      <div class="col-xs-6">
+      <div class="col-6">
         <label class="select-wrapper">
           <select class="js-cascading-item form-control no-shadow" name="city">
             <option>全部</option>
@@ -25,7 +25,7 @@
     </div>
 
     <div class="row m-b-sm">
-      <div class="col-xs-12">
+      <div class="col-12">
         <div class="input-group">
           <input class="form-control no-shadow" type="text" name="search" value="<?= $e($req['search']) ?>"
             placeholder="请输入名称查询">
