@@ -35,7 +35,7 @@
         <tbody>
         </tbody>
       </table>
-      <div class="well form-well">
+      <div class="well">
         <form class="form-inline" role="form">
           <label>
             <input class="ace" type="checkbox" id="check-all">

@@ -17,7 +17,7 @@
   <div class="col-12">
     <!-- PAGE CONTENT BEGINS -->
     <div class="table-responsive">
-      <div class="well form-well m-b">
+      <div class="well">
         <form class="js-user-form form-horizontal filter-form" role="form">
           <div class="form-group form-group-sm">
             <label class="col-md-1 control-label" for="nick-name">用户昵称：</label>

@@ -28,7 +28,7 @@
           </button>
         </div>
         <div class="modal-body p-a-0">
-          <div class="well form-well shop-popup-picker-well">
+          <div class="well shop-popup-picker-well">
             <form class="js-shop-popup-picker-form form-inline" role="form">
               省份:
               <div class="form-group">
