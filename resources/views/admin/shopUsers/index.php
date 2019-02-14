@@ -19,7 +19,7 @@
     <div class="table-responsive">
       <div class="well">
         <form class="js-user-form form-horizontal filter-form" role="form">
-          <div class="form-group form-group-sm">
+          <div class="form-group">
             <label class="col-md-1 control-label" for="nick-name">用户昵称：</label>
 
             <div class="col-md-3">
