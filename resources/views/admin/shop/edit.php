@@ -67,13 +67,17 @@ $view->layout();
             省市
           </label>
 
-          <div class="col-sm-2 p-r-0">
-            <select class="js-cascading-item province form-control" id="province" name="province">
-            </select>
-          </div>
-          <div class="col-sm-2">
-            <select class="js-cascading-item city form-control" id="city" name="city">
-            </select>
+          <div class="col-sm-4">
+            <div class="form-row">
+              <div class="col">
+                <select class="js-cascading-item province form-control" id="province" name="province">
+                </select>
+              </div>
+              <div class="col">
+                <select class="js-cascading-item city form-control" id="city" name="city">
+                </select>
+              </div>
+            </div>
           </div>
         </div>
 
