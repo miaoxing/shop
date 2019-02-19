@@ -6,7 +6,7 @@
 
 <form action="<?= $url('shop') ?>" method="get">
   <div class="container-fluid">
-    <div class="row shop-selects m-y-sm">
+    <div class="row shop-selects my-2">
       <div class="col-6">
         <label class="select-wrapper">
           <select class="js-cascading-item province form-control no-shadow" name="province">
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div class="row m-b-sm">
+    <div class="row mb-2">
       <div class="col-12">
         <div class="input-group">
           <input class="form-control no-shadow" type="text" name="search" value="<?= $e($req['search']) ?>"
