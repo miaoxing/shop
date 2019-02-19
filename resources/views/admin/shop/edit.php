@@ -17,7 +17,7 @@ $view->layout();
     <form id="shop-form" class="form-horizontal" method="post" role="form">
 
       <fieldset>
-        <legend class="text-muted bigger-130">
+        <legend class="text-muted text-xl">
           基本信息
         </legend>
         <div class="form-group">
@@ -112,7 +112,7 @@ $view->layout();
       </fieldset>
 
       <fieldset>
-        <legend class="text-muted bigger-130">
+        <legend class="text-muted text-xl">
           服务信息
         </legend>
 
@@ -215,7 +215,7 @@ $view->layout();
       </fieldset>
 
       <fieldset>
-        <legend class="text-muted bigger-130">
+        <legend class="text-muted text-xl">
           更多信息
         </legend>
 
