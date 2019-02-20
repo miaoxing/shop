@@ -10,7 +10,7 @@
       <span class="fileinput-exists">重新上传Excel</span>
       <input type="file" name="file">
     </span>
-    <a href="<?= $asset('assets/admin/shop/门店列表.xlsx') ?>" class="btn btn-link">下载范例</a>
+    <a href="<?= $asset('plugins/shop/files/门店列表.xlsx') ?>" class="btn btn-link">下载范例</a>
   </div>
 </form>
 <?= $block->end() ?>
