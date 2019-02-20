@@ -2,7 +2,7 @@ define([
   'form',
   'template',
   'css!plugins/shop/css/admin/shop-popup-picker',
-  'dataTable',
+  'plugins/admin/js/data-table',
   'comps/jquery-cascading/jquery-cascading'
 ], function (form, template) {
   var ShopPopupPicker = function () {
