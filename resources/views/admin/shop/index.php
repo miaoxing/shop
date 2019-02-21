@@ -1,4 +1,8 @@
-<?php $view->layout() ?>
+<?php
+
+$view->layout();
+$wei->page->addAsset('comps/jasny-bootstrap/dist/css/jasny-bootstrap.min.css');
+?>
 
 <?= $block('header-actions') ?>
 <form id="shop-upload-form" class="form-horizontal" method="post" role="form">
@@ -59,7 +63,8 @@
 
 <?= $block->js() ?>
 <script>
-  require(['plugins/admin/js/data-table', 'template', 'jquery-unparam', 'form'], function () {
+  require(['plugins/admin/js/data-table', 'template', 'jquery-unparam', 'form',
+    'comps/jasny-bootstrap/dist/js/jasny-bootstrap.min'], function () {
     $('#search-form').loadParams().update(function () {
       recordTable.reload($(this).serialize());
     });
