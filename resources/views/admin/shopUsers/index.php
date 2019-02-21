@@ -74,7 +74,7 @@
 
 <?= $block->js() ?>
 <script>
-  require(['assets/admin/user', 'plugins/admin/js/data-table', 'template', 'jquery-unparam', 'form', 'plugins/link-to/js/link-to'], function () {
+  require(['plugins/user/js/admin/users', 'plugins/admin/js/data-table', 'template', 'jquery-unparam', 'form', 'plugins/link-to/js/link-to'], function () {
     $('.js-user-form').loadParams().update(function () {
       recordTable.reload($(this).serialize(), false);
     });
