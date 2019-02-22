@@ -63,7 +63,7 @@ $wei->page->addAsset('comps/jasny-bootstrap/dist/css/jasny-bootstrap.min.css');
 
 <?= $block->js() ?>
 <script>
-  require(['plugins/admin/js/data-table', 'plugins/app/libs/artTemplate/template.min', 'form',
+  require(['plugins/admin/js/data-table', 'plugins/app/libs/artTemplate/template.min', 'plugins/admin/js/form',
     'comps/jasny-bootstrap/dist/js/jasny-bootstrap.min'], function () {
     $('#search-form').loadParams().update(function () {
       recordTable.reload($(this).serialize());

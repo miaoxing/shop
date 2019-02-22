@@ -291,7 +291,7 @@ $view->layout();
 <script>
   var shop = <?= $shop->toJson() ?>;
   require([
-    'plugins/link-to/js/link-to', 'form', 'plugins/app/js/validation',
+    'plugins/link-to/js/link-to', 'plugins/admin/js/form', 'plugins/app/js/validation',
     'comps/jquery-baidu-map-picker/jquery-baidu-map-picker',
     'plugins/admin/js/image-upload',
     'plugins/app/libs/jquery.populate/jquery.populate',
