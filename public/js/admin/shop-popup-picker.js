@@ -1,6 +1,6 @@
 define([
   'form',
-  plugins/app/libs/artTemplate/template.min,
+  'plugins/app/libs/artTemplate/template.min',
   'css!plugins/shop/css/admin/shop-popup-picker',
   'plugins/admin/js/data-table',
   'comps/jquery-cascading/jquery-cascading'
