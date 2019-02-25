@@ -49,7 +49,7 @@
                   </label>
                 </div>
                 <div class="form-group">
-                  <p class="form-control-static">
+                  <p class="form-control-plaintext">
                     已选 <span class="js-shop-popup-picker-selected-num">0</span> 个,
                     可选 <span class="js-shop-popup-picker-max-num">...</span> 个
                   </p>

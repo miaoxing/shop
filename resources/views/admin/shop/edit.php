@@ -225,7 +225,7 @@ $view->layout();
           </label>
 
           <div class="col-lg-4">
-            <p class="js-link-to form-control-static" id="link-to"></p>
+            <p class="js-link-to form-control-plaintext" id="link-to"></p>
           </div>
 
           <label class="col-lg-6 help-text" for="link-to">
