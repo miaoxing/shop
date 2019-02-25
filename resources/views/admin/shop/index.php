@@ -47,7 +47,7 @@ $wei->page->addAsset('comps/jasny-bootstrap/dist/css/jasny-bootstrap.min.css');
           </label>
 
           <div class="form-group">
-            <a id="batch-del" class="btn btn-info pull-right" href="javascript:void(0);">批量删除</a>
+            <a id="batch-del" class="btn btn-info float-right" href="javascript:void(0);">批量删除</a>
           </div>
         </form>
       </div>

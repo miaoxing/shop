@@ -42,7 +42,7 @@
                 </select>
               </div>
 
-              <div class="pull-right">
+              <div class="float-right">
                 <div class="checkbox">
                   <label>
                     <input type="checkbox" class="js-shop-popup-picker-view-selected" name="ids" value=""> 查看已选
