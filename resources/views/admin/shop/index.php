@@ -152,43 +152,16 @@ $wei->page->addAsset('comps/jasny-bootstrap/dist/css/jasny-bootstrap.min.css');
       $('#shop-upload-form').ajaxSubmit({
         dataType: 'json',
         type: 'post',
+        loading: true,
         data: {cols: 5},
         url: $.url('admin/excel/uploadAndParseToJson'),
         success: function (result) {
           if (result.code < 0) {
             $.err(result.message, 5000);
           } else {
-            $.info('文件上传成功,解析中...', 60000);
-            $.tips.hideAll();
             $.msg(result);
-            if (result.code > 0) {
-              importExcel.loadData(result.data);
-            }
-          }
-        }
-      });
-    };
-
-    // 提交给解析器解析Excel处理
-    importExcel.parseExcel = function (file) {
-      $.ajax({
-        type: 'post',
-        url: $.url('admin/excel/parseToJson'),
-        data: {
-          file: file,
-          cols: 5
-        },
-        dataType: 'json',
-        success: function (result) {
-          $.tips.hideAll();
-          $.msg(result);
-          if (result.code > 0) {
             importExcel.loadData(result.data);
           }
-        },
-        error: function (result) {
-          $.tips.hideAll();
-          $.msg(result);
         }
       });
     };
@@ -201,9 +174,7 @@ $wei->page->addAsset('comps/jasny-bootstrap/dist/css/jasny-bootstrap.min.css');
         url: $.url('admin/shop/upload'),
         data: {shops: data},
         success: function (result) {
-          window.location.href = '<?=wei()->url('admin/shop/index')?>';
-        },
-        error: function (result) {
+          window.location.href = $.url('admin/shop/index');
         }
       });
     };
