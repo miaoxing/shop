@@ -9,7 +9,7 @@
     <div class="row shop-selects my-2">
       <div class="col-6">
         <label class="select-wrapper">
-          <select class="js-cascading-item province form-control no-shadow" name="province">
+          <select class="js-cascading-item province form-control" name="province">
             <option>全部</option>
           </select>
         </label>
@@ -17,7 +17,7 @@
 
       <div class="col-6">
         <label class="select-wrapper">
-          <select class="js-cascading-item form-control no-shadow" name="city">
+          <select class="js-cascading-item form-control" name="city">
             <option>全部</option>
           </select>
         </label>
@@ -27,7 +27,7 @@
     <div class="row mb-2">
       <div class="col-12">
         <div class="input-group">
-          <input class="form-control no-shadow" type="text" name="search" value="<?= $e($req['search']) ?>"
+          <input class="form-control" type="text" name="search" value="<?= $e($req['search']) ?>"
             placeholder="请输入名称查询">
           <span class="input-group-btn">
             <button class="btn btn-secondary" type="submit">查询</button>
