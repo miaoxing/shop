@@ -1,43 +1,64 @@
-<?php $view->layout() ?>
+<?php
+
+$view->layout();
+$wei->page->addAsset('comps/dropdown-menu/dropdown-menu.css');
+?>
 
 <?= $block->css() ?>
 <link rel="stylesheet" href="<?= $asset('plugins/shop/css/shops.css') ?>">
 <?= $block->end() ?>
 
-<form action="<?= $url('shop') ?>" method="get">
-  <div class="container-fluid">
-    <div class="row shop-selects my-2">
-      <div class="col-6">
-        <label class="select-wrapper">
-          <select class="js-cascading-item province form-control" name="province">
-            <option>全部</option>
-          </select>
-        </label>
-      </div>
+<div class="filter-dropdown nav-dropdown">
+  <ul class="nav-tabs tabs-justified border-top-bottom">
+    <li class="dropdown">
+      <a class="text-active-primary" href="javascript: void(0)" data-toggle="dropdown" data-target="#search">
+        <span>搜索</span>&nbsp;&nbsp;
+        <i class="icon small icon-chevron-down"></i>
+      </a>
+    </li>
+  </ul>
+  <div class="menu-content">
+    <div id="search" class="dropdown-menu fade border-bottom">
+      <div class="menu sub">
+        <form action="" class="js-dist-form form form-inset mt-2 control-label-md">
+          <?php foreach ($req->getQueries() as $key => $value) : ?>
+            <input type="hidden" name="<?= $e($key) ?>" value="<?= $e($value) ?>">
+          <?php endforeach ?>
 
-      <div class="col-6">
-        <label class="select-wrapper">
-          <select class="js-cascading-item form-control" name="city">
-            <option>全部</option>
-          </select>
-        </label>
+          <div class="form-body">
+            <div class="form-group">
+              <label for="nick-name" class="col-form-label">省份</label>
+              <div class="col-control">
+                <select class="js-cascading-item province form-control" name="province">
+                  <option>全部</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="product-name" class="col-form-label">城市</label>
+              <div class="col-control">
+                <select class="js-cascading-item form-control" name="city">
+                  <option>全部</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="product-name" class="col-form-label">名称</label>
+              <div class="col-control">
+                <input class="form-control" type="text" name="search" value="<?= $e($req['search']) ?>">
+              </div>
+            </div>
+          </div>
+          <div class="form-group form-footer">
+            <button type="submit" class="btn btn-brand btn-primary btn-block">搜索</button>
+          </div>
+        </form>
       </div>
     </div>
-
-    <div class="row mb-2">
-      <div class="col-12">
-        <div class="input-group">
-          <input class="form-control" type="text" name="search" value="<?= $e($req['search']) ?>"
-            placeholder="请输入名称查询">
-          <span class="input-group-append">
-            <button class="btn btn-secondary" type="submit">查询</button>
-          </span>
-        </div>
-      </div>
-    </div>
-
   </div>
-</form>
+</div>
 
 <?php foreach ($shops as $shop) : ?>
   <ul class="shop-list list">
@@ -99,6 +120,7 @@
 <?= $block->js() ?>
 <script>
   require([
+    'comps/dropdown-menu/dropdown-menu',
     'comps/jquery-cascading/jquery-cascading',
     'comps/jquery.cookie/jquery.cookie'
   ], function () {
@@ -107,8 +129,7 @@
     $('.js-cascading-item').cascading({
       url: $.url('shop/regions.json'),
       labelKey: 'value',
-      values: [$.req('province'), $.req('city')],
-      defaultOption: '<option value="">全部</option>'
+      values: <?= json_encode([$req['province'], $req['city']]) ?>
     });
 
     var shops = <?= $shops->toJson(['id', 'lat', 'lng']) ?>;
