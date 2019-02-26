@@ -30,7 +30,7 @@
           <input class="form-control no-shadow" type="text" name="search" value="<?= $e($req['search']) ?>"
             placeholder="请输入名称查询">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">查询</button>
+            <button class="btn btn-secondary" type="submit">查询</button>
           </span>
         </div>
       </div>

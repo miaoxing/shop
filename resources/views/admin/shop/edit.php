@@ -8,7 +8,7 @@ $view->layout();
 <?= $block->end() ?>
 
 <?= $block('header-actions') ?>
-  <a class="btn btn-default" href="<?= $url('admin/shop/index') ?>">返回列表</a>
+  <a class="btn btn-secondary" href="<?= $url('admin/shop/index') ?>">返回列表</a>
 <?= $block->end() ?>
 
 <div class="row">
@@ -271,7 +271,7 @@ $view->layout();
             提交
           </button>
           &nbsp; &nbsp; &nbsp;
-          <a class="btn btn-default" href="<?= $url('admin/shop/index') ?>">
+          <a class="btn btn-secondary" href="<?= $url('admin/shop/index') ?>">
             <i class="fa fa-undo"></i>
             返回列表
           </a>
