@@ -9,7 +9,7 @@
     <li class="list-item-link">
       <a class="js-user-link list-item has-feedback"
         href="<?= $shopUser['linkTo']['type'] ? $wei->linkTo->getUrl($shopUser['linkTo']) : 'javascript:;' ?>">
-        <div class="list-col list-col-left shop-user-img">
+        <div class="list-col shop-user-img">
           <img src="<?= $shopUser->getUser()->getHeadImg() ?>">
         </div>
         <div class="list-col list-middle">
