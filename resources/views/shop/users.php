@@ -13,7 +13,7 @@
           <img src="<?= $shopUser->getUser()->getHeadImg() ?>">
         </div>
         <div class="list-col list-middle">
-          <h4 class="list-heading">
+          <h4 class="list-title">
             <?= $shopUser->getUser()->get('name') ?: '暂无' ?>
           </h4>
         </div>
