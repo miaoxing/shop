@@ -65,7 +65,7 @@ $wei->page->addAsset('comps/dropdown-menu/dropdown-menu.css');
     <li class="list-item-link">
       <a class="list-item has-feedback"
         href="<?= $shop['linkTo']['type'] ? $wei->linkTo->getUrl($shop['linkTo']) : 'javascript:;' ?>">
-        <h4 class="list-item-title">
+        <h4 class="list-title">
           <?= $shop['name'] ?>
           <span class="js-distance-<?= $shop['id'] ?> shop-distance text-muted"></span>
         </h4>
