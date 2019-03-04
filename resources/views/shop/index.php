@@ -63,30 +63,30 @@ $wei->page->addAsset('comps/dropdown-menu/dropdown-menu.css');
 <?php foreach ($shops as $shop) : ?>
   <ul class="shop-list list">
     <li class="list-item-link">
-      <a class="list-item list-has-feedback"
+      <a class="list-item list-has-arrow"
         href="<?= $shop['linkTo']['type'] ? $wei->linkTo->getUrl($shop['linkTo']) : 'javascript:;' ?>">
         <h4 class="list-title">
           <?= $shop['name'] ?>
           <span class="js-distance-<?= $shop['id'] ?> shop-distance text-muted"></span>
         </h4>
         <?php if ($shop['linkTo']['type']) : ?>
-          <i class="bm-angle-right list-feedback"></i>
+          <i class="bm-angle-right list-arrow"></i>
         <?php endif ?>
       </a>
     </li>
 
     <?php if ($shop['phone']) : ?>
       <li class="list-item-link">
-        <a class="list-item text-muted list-has-feedback" href="tel:<?= $shop['phone'] ?>">
+        <a class="list-item text-muted list-has-arrow" href="tel:<?= $shop['phone'] ?>">
           <i class="shop-icon">&#xe603;</i>
           <?= $shop['phone'] ?>
-          <i class="bm-angle-right list-feedback"></i>
+          <i class="bm-angle-right list-arrow"></i>
         </a>
       </li>
     <?php endif ?>
 
     <li class="list-item-link">
-      <a class="list-item text-muted list-has-feedback" href="http://api.map.baidu.com/marker?<?= http_build_query([
+      <a class="list-item text-muted list-has-arrow" href="http://api.map.baidu.com/marker?<?= http_build_query([
         'location' => $shop['lat'] . ',' . $shop['lng'],
         'title' => $shop['name'],
         'content' => $shop['name'],
@@ -94,17 +94,17 @@ $wei->page->addAsset('comps/dropdown-menu/dropdown-menu.css');
       ]) ?>">
         <i class="shop-icon">&#xe601;</i>
         <?= $shop['province'] . $shop['city'] . $shop['address'] ?>
-        <i class="bm-angle-right list-feedback"></i>
+        <i class="bm-angle-right list-arrow"></i>
       </a>
     </li>
 
     <?php if ($users[$shop['id']]) : ?>
       <li class="list-item-link">
-        <a class="list-item text-muted list-has-feedback" href="<?= $url('shop/%s/users', $shop['id']) ?>">
+        <a class="list-item text-muted list-has-arrow" href="<?= $url('shop/%s/users', $shop['id']) ?>">
           <i class="shop-icon">&#xe600;</i>
           <?= $userTitle ?>: <?= implode(', ', $users[$shop['id']]) ?>
           <?= count($users[$shop['id']]) === 3 ? '...' : '' ?>
-          <i class="bm-angle-right list-feedback"></i>
+          <i class="bm-angle-right list-arrow"></i>
         </a>
       </li>
     <?php endif ?>
