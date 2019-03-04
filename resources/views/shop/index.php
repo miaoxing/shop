@@ -9,7 +9,7 @@ $wei->page->addAsset('comps/dropdown-menu/dropdown-menu.css');
 <?= $block->end() ?>
 
 <div class="filter-dropdown nav-dropdown">
-  <ul class="nav-tabs tabs-justified border-top-bottom">
+  <ul class="nav-tabs tabs-justified border-y">
     <li class="dropdown">
       <a class="text-active-primary" href="javascript: void(0)" data-toggle="dropdown" data-target="#search">
         <span>搜索</span>&nbsp;&nbsp;
