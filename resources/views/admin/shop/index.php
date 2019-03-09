@@ -129,7 +129,7 @@ $wei->page->addAsset('comps/jasny-bootstrap/dist/css/jasny-bootstrap.min.css');
         alert('请选择<?= wei()->shop->shopName ?>');
         return;
       }
-      $.confirm('删除之后将无法恢复，确认吗?', function (result) {
+      $.confirm('删除之后将无法恢复，确定吗?', function (result) {
         if (!result) {
           return;
         }
