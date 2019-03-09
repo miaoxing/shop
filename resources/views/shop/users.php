@@ -12,7 +12,7 @@
         <div class="list-col shop-user-img">
           <img src="<?= $shopUser->getUser()->getHeadImg() ?>">
         </div>
-        <div class="list-col list-middle">
+        <div class="list-col align-self-center">
           <h4 class="list-title">
             <?= $shopUser->getUser()->get('name') ?: '暂无' ?>
           </h4>
