@@ -1,5 +1,5 @@
 define([
-  'form',
+  'plugins/admin/js/form',
   'plugins/app/libs/artTemplate/template.min',
   'css!plugins/shop/css/admin/shop-popup-picker',
   'plugins/admin/js/data-table',
